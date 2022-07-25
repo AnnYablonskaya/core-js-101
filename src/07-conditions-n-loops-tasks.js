@@ -93,7 +93,7 @@ function getSumBetweenNumbers(/* n1, n2 */) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-  if (a + b > c && a + c > b && c + b > a) {
+  if (a + c > b && a + b > c && c + b > a) {
     return true;
   }
   return false;

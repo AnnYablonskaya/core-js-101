@@ -72,8 +72,12 @@ function getFactorial(n) {
  *   5,10  =>  45 ( = 5+6+7+8+9+10 )
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
-function getSumBetweenNumbers(/* n1, n2 */) {
-  throw new Error('Not implemented');
+function getSumBetweenNumbers(n1, n2) {
+  let result = 0;
+  for (let i = n1; i <= n2; i += 1) {
+    result += i;
+  }
+  return result;
 }
 
 
@@ -132,10 +136,21 @@ function isTriangle(a, b, c) {
  *   { top:20, left:20, width: 20, height: 20 }    =>  false
  *
  */
-function doRectanglesOverlap(/* rect1, rect2 */) {
-  throw new Error('Not implemented');
-}
+function doRectanglesOverlap(rect1, rect2) {
+  const rect1X1 = rect1.left;
+  const rect1X2 = rect1.left + rect1.width;
+  const rect1Y1 = rect1.top;
+  const rect1Y2 = rect1.top + rect1.height;
+  const rect2X1 = rect2.left;
+  const rect2X2 = rect2.left + rect2.width;
+  const rect2Y1 = rect2.top;
+  const rect2Y2 = rect2.top + rect2.height;
 
+  if ((rect1Y2 > rect2Y1 && rect1X2 > rect2X1) || (rect2X2 < rect1X1 && rect2Y2 < rect1Y1)) {
+    return true;
+  }
+  return false;
+}
 
 /**
  * Returns true, if point lies inside the circle, otherwise false.
@@ -163,8 +178,8 @@ function doRectanglesOverlap(/* rect1, rect2 */) {
  *   { center: { x:0, y:0 }, radius:10 },  { x:10, y:10 }   => false
  *
  */
-function isInsideCircle(/* circle, point */) {
-  throw new Error('Not implemented');
+function isInsideCircle(circle, point) {
+  return (point.x - circle.center.x) ** 2 + (point.y - circle.center.y) ** 2 < circle.radius ** 2;
 }
 
 
@@ -179,8 +194,9 @@ function isInsideCircle(/* circle, point */) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(/* str */) {
-  throw new Error('Not implemented');
+function findFirstSingleChar(str) {
+  return str.split('')
+    .find((i) => str.indexOf(i) === str.lastIndexOf(i));
 }
 
 
